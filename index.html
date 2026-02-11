@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthsary Surprise</title>
+<style>
+body {
+  font-family: 'Arial', sans-serif;
+  background: #ffe6f0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dancing cat animation */
+.cat {
+  width: 150px;
+  margin: 20px auto;
+  animation: dance 1s infinite alternate;
+}
+
+@keyframes dance {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+h1 { color: #ff4d6d; margin: 10px; font-size: 2em; }
+.question, .gift-text { margin: 15px; font-size: 1.2em; color: #333; }
+
+.btn {
+  padding: 10px 20px; margin: 10px; border: none;
+  border-radius: 25px; cursor: pointer; font-size: 1em;
+}
+.yes { background-color: #ff4d6d; color: white; }
+.no { background-color: #ccc; color: #333; }
+
+.hidden { display: none; }
+
+/* Boxes */
+.boxes { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.box {
+  width: 100px; height: 100px;
+  background-color: white; border-radius: 15px;
+  display: flex; justify-content: center; align-items: center;
+  cursor: pointer; flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.box img { width: 50px; margin-bottom: 5px; }
+.box:hover { transform: scale(1.05); transition: transform 0.2s; }
+
+/* Content sections */
+.content-section { margin-top: 20px; padding: 0 10px; }
+
+/* Box 1 photos - centered */
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+.photo-grid img {
+  width: 48%;
+  max-width: 150px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+.photo-grid img:hover {
+  transform: scale(1.1);
+}
+
+/* Flower box layout */
+.flower-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.messages {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 350px;
+  margin-top: 20px;
+}
+.messages .bubble { 
+  max-width: 140px; padding: 10px; border-radius: 20px; background-color: #ffcccc; text-align: left; 
+}
+.messages .bubble.right { background-color: #ffd6e0; align-self: flex-end; }
+
+/* Mobile adjustments */
+@media screen and (max-width: 600px) {
+  h1 { font-size: 1.5em; }
+  .box { width: 80px; height: 80px; }
+  .box img { width: 40px; margin-bottom: 3px; }
+  .messages { flex-direction: column; align-items: center; gap: 10px; }
+  .messages .bubble.right { align-self: center; }
+  .photo-grid img { width: 48%; max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<img src="https://media.tenor.com/JhVlbsQoCboAAAAm/cute-dancing.webp" alt="Dancing Cat" class="cat">
+
+<h1>Hello My Love!</h1>
+<p class="question">Do you want to see my gift for you?</p>
+<button class="btn yes" id="yesBtn">Yes Please</button>
+<button class="btn no" id="noBtn">No Thanks</button>
+
+<!-- Four Boxes Section -->
+<div id="boxesSection" class="hidden">
+  <p class="gift-text"><strong>THESE ARE FOR U MY LOVE</strong></p>
+  <div class="boxes">
+    <div class="box" id="box1">
+      <img src="https://i.pinimg.com/1200x/27/e7/ba/27e7ba9b77bdc166f50cd5aac8ede982.jpg" alt="Logo">
+    </div>
+    <div class="box" id="box2">
+      <img src="https://i.pinimg.com/736x/8f/7d/4e/8f7d4e39422ff6cf993c633d994fb288.jpg" alt="Flower">
+    </div>
+    <div class="box" id="box3">
+      <img src="https://i.pinimg.com/736x/55/4e/d0/554ed03006a02908ce87e3afe0340352.jpg" alt="Heart Lock">
+    </div>
+    <div class="box" id="box4">
+      <img src="https://i.pinimg.com/736x/de/4c/86/de4c86c06ea4b63721a2f178a3cbac3e.jpg" alt="Envelope">
+    </div>
+  </div>
+</div>
+
+<!-- Box 1 Content -->
+<div id="box1Content" class="content-section hidden">
+  <p>CAPTURED MEMORY</p>
+  <div class="photo-grid">
+<img src="photo1.webp" alt="Photo1">
+<img src="images/photo2.webp" alt="Photo2">
+<img src="images/photo3.webp" alt="Photo3">
+<img src="images/photo4.webp" alt="Photo4">
+
+  </div>
+  <button class="btn yes" onclick="returnToBoxes()">Return</button>
+</div>
+
+<!-- Box 2 Content (Flower) -->
+<div id="box2Content" class="content-section hidden">
+  <div class="flower-container">
+    <img src="https://i.pinimg.com/736x/8f/7d/4e/8f7d4e39422ff6cf993c633d994fb288.jpg" style="width:120px;">
+    <div class="messages">
+      <div class="bubble">I love you! This flower symbolizes cherished memories shared together.</div>
+      <div class="bubble right">Red carnation: Deep love, admiration, and affection.</div>
+      <div class="bubble">You are my everything, I’m proud to have you in my life.</div>
+      <div class="bubble right">This makes a symbol of enduring love and lasting admiration. ❤️</div>
+    </div>
+  </div>
+  <p>CARNATION</p>
+  <p>My favorite flower</p>
+  <button class="btn yes" onclick="returnToBoxes()">Return</button>
+</div>
+
+<!-- Box 3 Content (Song link) -->
+<div id="box3Content" class="content-section hidden">
+  <h2>THIS SONG IS FOR YOU</h2>
+  <a href="https://www.youtube.com/watch?v=LiNPsur67Kk" target="_blank" style="font-size:1.2em; color:#ff4d6d; text-decoration:underline;">
+    Click here to watch "Makasama" by Lucas Miguel on YouTube ❤️
+  </a>
+  <h4>This song symbolizes long-lasting love, deep commitment, and the desire to grow old together.</h4>
+  <button class="btn yes" onclick="returnToBoxes()">Return</button>
+</div>
+
+<!-- Box 4 Content -->
+<div id="box4Content" class="content-section hidden">
+  <h2>Here is my special message for you!💖</h2>
+  <h5>Hello My Bunot na pogi at makulit!</h5>
+  <h5> Happy one year and two months love, medyo matagal na din tayo unte sana mas tumagal pa tayo.
+   </h5>
+   <h6>Kahit na minsan ang tigas ng ulo mo kahit di mo aminin yan matigas talaga ulo mo minsan pero okay lang kaso makinig kana rin sa susunod ha?</h6>
+   <P>Mahal na mahal kita sobra, alam mo yan. Wag sana tayo magkaroon ng taguan sa isa't isa kasi tayo ang magkakampi dito.
+    Tandaan mo lagi na kaya ko tiisin lahat basta wag mo lang ako pag sisinungalingan kasi alam mo naman siguro na pangit ang 
+    relasyon na hindi buo tiwala o wala talagang tiwala. Lagi mo rin tandaan na andito lang ako palagi para sayo kung kailangan
+    mo ng makakausap o kahit ano pa yan. Marami na din tayong ups and downs together pero ayun still counting pa rin tayo.
+    Wag ka mag aalangan mag sabi sa akin kahit kelan dahil para mo na rin akong asawa kaso hindi pa nga lang legally na kasal HAHAHAHHA.
+    NEXT YEAR NA BA MAG P-PROPOSE? HOYYYY EME HAHAHHAHAHAHHAHA! Hindi kita p-pressure sa ganyan lalo na kung hindi ka pa naman 
+    talaga ready o ganon kabuo ang desisyon mo na ako na makasama mo habang buhay kaya ayos lang. Somehow sana mas mag 
+    grow pa tayo with each other kasi kung mag g-grow apart tayo e panigurado nan kahit may anak tayo e maghihiwalay talaga tayo.
+    Kapag need mo ng dagdag sa binibigay kay Buchog e mag sabi ka rin sa akin ha? para mabigyan din kita pero sabihin mo
+    in advance sa akin para hindi ko maigastos yung pera. S-support kita sa kahit anong gusto mong gawin sa buhay mo o plano mo 
+    para sa atin. Lahat yun isabi mo lang sa akin at hindi naman ako tutol kung alam ko naman na para rin sa ikakabuti ng buhay
+    natin at lalo na sa buhay ng anak natin. I LOVE YOU SO MUCH LOVEY KO, MWUAHHHHHH!
+   </P>
+  <button class="btn yes" onclick="returnToBoxes()">Return</button>
+</div>
+
+<script>
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const boxesSection = document.getElementById('boxesSection');
+
+yesBtn.addEventListener('click', () => {
+  boxesSection.classList.remove('hidden');
+  yesBtn.style.display = 'none';
+  noBtn.style.display = 'none';
+});
+noBtn.addEventListener('click', () => alert("Okay, maybe later! ❤️"));
+
+const box1 = document.getElementById('box1');
+const box2 = document.getElementById('box2');
+const box3 = document.getElementById('box3');
+const box4 = document.getElementById('box4');
+
+const box1Content = document.getElementById('box1Content');
+const box2Content = document.getElementById('box2Content');
+const box3Content = document.getElementById('box3Content');
+const box4Content = document.getElementById('box4Content');
+
+function hideAllBoxes() {
+  box1Content.classList.add('hidden');
+  box2Content.classList.add('hidden');
+  box3Content.classList.add('hidden');
+  box4Content.classList.add('hidden');
+}
+
+function returnToBoxes() {
+  hideAllBoxes();
+  boxesSection.classList.remove('hidden');
+}
+
+box1.addEventListener('click', () => {
+  hideAllBoxes();
+  boxesSection.classList.add('hidden');
+  box1Content.classList.remove('hidden');
+});
+box2.addEventListener('click', () => {
+  hideAllBoxes();
+  boxesSection.classList.add('hidden');
+  box2Content.classList.remove('hidden');
+});
+box3.addEventListener('click', () => {
+  hideAllBoxes();
+  boxesSection.classList.add('hidden');
+  box3Content.classList.remove('hidden');
+});
+box4.addEventListener('click', () => {
+  hideAllBoxes();
+  boxesSection.classList.add('hidden');
+  box4Content.classList.remove('hidden');
+});
+</script>
+
+</body>
+</html>
